@@ -1,1 +1,2 @@
-# Word Sramble
+# Word Scramble
+Simple word scramble game
