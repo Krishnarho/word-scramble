@@ -10,7 +10,8 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: darkcyan;
+    background: -webkit-linear-gradient(to left, #3a6186 , #89253e);  
+    background: linear-gradient(to left, #3a6186 , #89253e);
 }
 .container {
     width: 450px;
