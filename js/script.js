@@ -8,7 +8,7 @@ const wordText = document.querySelector('.word'),
 
 let correctWord, timer;
 
-const initTimer = maxTime =>{
+const initTimer = (maxTime)  =>{ // keep in mind maxTime is argument of the (25)
     clearInterval(timer);
     timer = setInterval(() => {
         if(maxTime > 0){
@@ -27,7 +27,7 @@ const initGame = () => {
     let wordArray = randomObj.word.split("");
     for(let i = wordArray.length - 1; i > 0; i--){
         let j = Math.floor(Math.random() * (i+1));
-        [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
+        [wordArray[i], wordArray[j]] = [wordArray[j] , wordArray[i]];
     }
     wordText.innerHTML = wordArray.join("");
     hintText.innerHTML = randomObj.hint;
@@ -39,7 +39,12 @@ const initGame = () => {
     console.log(wordArray,timer);
 }
 initGame();
-
+function letterError(e){ //console.log(e.key)
+    if (!correctWord.includes(e.key) && e.keyCode !== 8) {
+      e.preventDefault();
+      return false;    
+    }
+  }
 const checkWord = () =>{
     let userWord = inputField.value.toLocaleLowerCase();
     if(!userWord) return alert("Please enter a word to check");
@@ -51,3 +56,4 @@ const checkWord = () =>{
 
 refreshBtn.addEventListener("click", initGame);
 checkBtn.addEventListener("click", checkWord);
+document.addEventListener('keydown', letterError)
